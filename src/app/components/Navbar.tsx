@@ -31,9 +31,9 @@ async function Navbar() {
               ): (
                 
                 <>
-                  <li className='bg-blue-700 px-3 py-1.5 rounded'>
+                  {/* <li className='bg-blue-700 px-3 py-1.5 rounded'>
                     <Link href="/" className="hover:underline ">Home</Link>
-                  </li>
+                  </li> */}
                   <li className='bg-blue-700 px-3 py-1.5 rounded'>
                     <Link href="/dashboard" className="hover:underline">Dashboard</Link>
                   </li>

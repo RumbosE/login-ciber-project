@@ -24,6 +24,7 @@ function LoginPage() {
             setError(res.error)
             return
         }else {
+            alert("Login successful, you are in!")
             router.push(`/dashboard?user=${data.username}`)
             router.refresh()
         }
@@ -36,7 +37,7 @@ function LoginPage() {
         <form action="" onSubmit={onSubmit} className="w-1/2 h-max bg-gray-300 flex flex-col justify-between px-6 py-10 rounded-lg">
 
             {error && (
-                <div className="bg-red-500 text-white p-3 rounded-lg text-center text-lg">{error}</div>
+                <div className="bg-red-500 text-white p-3 rounded-lg text-center">{error}</div>
             )}
 
             <h1 className="text-blue-500 font-bold text-3xl mb-5 text-center">Login Page</h1>
