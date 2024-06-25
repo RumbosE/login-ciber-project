@@ -3,9 +3,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 recodar:
+
 al iniciar el proyecto 
+
 npm install
-npx prisma migrate dev --name init #esto para que el orm cree la tabla de la base de datos 
+
+npx prisma migrate dev --name init #esto para
+ que el orm cree la tabla de la base de datos 
 
 First, run the development server:
 
