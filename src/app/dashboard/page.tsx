@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
-function dashboard() {
+function Dashboard() {
 
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -35,4 +35,4 @@ function dashboard() {
     )
 }
 
-export default dashboard
+export default Dashboard
