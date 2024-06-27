@@ -3,7 +3,7 @@ import  CredentialsProvider  from "next-auth/providers/credentials";
 import db from "@/libs/db";
 import bcrypt from "bcrypt";
 
-export const authOptions = {
+const authOptions = {
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -19,7 +19,7 @@ export const authOptions = {
                     placeholder: "******"
                 }
             },
-            async authorize (credentials, req){
+            authorize: async (credentials) => {
                 console.log(credentials);
                 if (!credentials) {
                     throw new Error("Credentials are missing.");
@@ -40,17 +40,18 @@ export const authOptions = {
 
                 if (!matchPassword) throw new Error("Password is incorrect");
 
-                return { id: userFound.id, name: userFound.username }
+                return {
+                    id: userFound.id.toString(), // Convert to string
+                    name: userFound.username,
+                };
 
             }
         })
     ],
-    secret: process.env.SECRET,
+    secret: process.env.SECRET || "SECRET",
     pages: {
         signIn: "/auth/login",
     },
 }
 
-const handler = NextAuth(authOptions)
-
-export { handler as GET, handler as POST}
+export default NextAuth(authOptions)
