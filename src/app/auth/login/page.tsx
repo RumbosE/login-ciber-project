@@ -14,14 +14,20 @@ function LoginPage() {
 
     const onSubmit = handleSubmit(async (data) => {
         console.log(data)
-        const res = await signIn("credentials", {
-            redirect: false,
-            username: data.username,
-            password: data.password
+        
+        const res = await fetch("/api/auth/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: data.username,
+                password: data.password,
+            })
         })
 
-        if (res?.error) {
-            setError(res.error)
+        if (!res.ok) {
+            setError(data.message)
             return
         }else {
             alert("Login successful, you are in!")
@@ -34,16 +40,16 @@ function LoginPage() {
 
     return (
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-        <form action="" onSubmit={onSubmit} className="w-1/2 h-max bg-gray-300 flex flex-col justify-between px-6 py-10 rounded-lg">
+        <form action="" onSubmit={onSubmit} className="w-1/2 h-max bg-gray-200 flex flex-col justify-between px-6 py-10 rounded-lg">
 
             {error && (
                 <div className="bg-red-500 text-white p-3 rounded-lg text-center">{error}</div>
             )}
 
-            <h1 className="text-blue-500 font-bold text-3xl mb-5 text-center">Login Page</h1>
+            <h1 className="text-slate-950 font-bold text-3xl mb-5 text-center">Login Page</h1>
             <div className="flex flex-col gap-3">
                 <div>
-                <label htmlFor="username" className="text-blue-900 font-bold">Username</label>
+                <label htmlFor="username" className="text-slate-700 font-bold">Username</label>
                 <input type="text"
                     {...register("username",{
                         required: {
@@ -51,7 +57,7 @@ function LoginPage() {
                             message: "Username is required"
                         }
                     })}
-                    className="p-2 border bg-slate-100 text-blue-900 rounded block border-gray-300 w-full"
+                    className="p-2 border bg-slate-100 text-slate-700 rounded block border-gray-500 w-full"
                     placeholder="Type your username..."
 
                 />
@@ -61,7 +67,7 @@ function LoginPage() {
                 </div>
 
                 <div>
-                    <label htmlFor="email" className="text-blue-900 font-bold">Password</label>
+                    <label htmlFor="email" className="text-slate-700 font-bold">Password</label>
                 <input type="password"
                     {...register("password",{
                         required:{
@@ -69,7 +75,7 @@ function LoginPage() {
                             message: "Password is required"
                         }
                     })}
-                    className="p-2 border bg-slate-100 text-blue-900 rounded block border-gray-300 w-full"
+                    className="p-2 border bg-slate-100 text-slate-700 rounded block border-gray-500 w-full"
                     placeholder="*******"
                 />
                 {errors.password && (
@@ -78,7 +84,7 @@ function LoginPage() {
                 </div>
             </div>
 
-            <button type="submit" className="w-full bg-green-500 p-3 mt-6 rounded-lg text-white text-lg font-bold">Submit</button>
+            <button type="submit" className="w-full bg-green-700 p-3 mt-6 rounded-lg text-white text-lg font-bold">Submit</button>
         </form>
     </div>
     );

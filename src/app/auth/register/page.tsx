@@ -40,15 +40,15 @@ function RegisterPage() {
     return (
 
         <div className="h-[calc(100vh-7rem)] flex justify-center items-center">
-            <form action="" onSubmit={onSubmit} className="w-1/2 h-fit bg-gray-300 flex flex-col justify-between px-6 py-10 rounded-lg">
+            <form action="" onSubmit={onSubmit} className="w-1/2 h-fit bg-gray-200 flex flex-col justify-between px-6 py-10 rounded-lg">
 
-                <h1 className="text-blue-500 font-bold text-3xl mb-5 text-center">Register Page</h1>
+                <h1 className="text-slate-950 font-bold text-3xl mb-5 text-center">Register Page</h1>
                 {error && (
                     <div className="bg-red-500 text-white p-3 rounded-lg text-center">{error}</div>
                 )}
                 <div className="flex flex-col gap-3">
                     <div>
-                        <label htmlFor="username" className="text-blue-900 font-bold">Username</label>
+                        <label htmlFor="username" className="text-slate-700 font-bold">Username</label>
                         <input type="text"
                             {...register("username", {
                                 required: {
@@ -56,7 +56,7 @@ function RegisterPage() {
                                     message: "This field is required"
                                 }
                             })}
-                            className="p-2 border bg-slate-100 text-blue-900 rounded block border-gray-300 w-full"
+                            className="p-2 border bg-slate-100 text-slate-700 rounded block border-gray-500 w-full"
                             placeholder="Type your username..."
 
                         />
@@ -66,7 +66,7 @@ function RegisterPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="email" className="text-blue-900 font-bold">Password</label>
+                        <label htmlFor="email" className="text-slate-700 font-bold">Password</label>
                         <input type="password"
                             {...register("password", {
                                 required: {
@@ -74,7 +74,7 @@ function RegisterPage() {
                                     message: "This field is required"
                                 }
                             })}
-                            className="p-2 border bg-slate-100 text-blue-900 rounded block border-gray-300 w-full"
+                            className="p-2 border bg-slate-100 text-slate-700 rounded block border-gray-500 w-full"
                             placeholder="*******"
                         />
                         {errors.password && (
@@ -83,7 +83,7 @@ function RegisterPage() {
                     </div>
 
                     <div>
-                        <label htmlFor="confirmPassword" className="text-blue-900 font-bold">Confirm Password</label>
+                        <label htmlFor="confirmPassword" className="text-slate-700 font-bold">Confirm Password</label>
                         <input type="password"
                             {...register("confirmPassword", {
                                 required: {
@@ -91,7 +91,7 @@ function RegisterPage() {
                                     message: "This field is required"
                                 }
                             })}
-                            className="p-2 border bg-slate-100 text-blue-900 rounded block border-gray-300 w-full"
+                            className="p-2 border bg-slate-100 text-slate-700 rounded block border-gray-500 w-full"
                             placeholder="*******"
                         />
                         {errors.confirmPassword && (
@@ -102,7 +102,7 @@ function RegisterPage() {
                 </div>
 
 
-                <button type="submit" className="w-full bg-green-500 p-3 mt-6 rounded-lg text-white text-lg font-bold">Submit</button>
+                <button type="submit" className="w-full bg-green-700 p-3 mt-6 rounded-lg text-white text-lg font-bold">Submit</button>
             </form>
         </div>
 
