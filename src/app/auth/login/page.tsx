@@ -15,7 +15,7 @@ function LoginPage() {
     const onSubmit = handleSubmit(async (data) => {
         console.log(data)
         
-        const res = await fetch("/api/auth/register", {
+        const res = await fetch("/api/auth/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -26,13 +26,12 @@ function LoginPage() {
             })
         })
 
-        if (!res.ok) {
-            setError(data.message)
-            return
-        }else {
+        if (res.ok) {
             alert("Login successful, you are in!")
             router.push(`/dashboard?user=${data.username}`)
             router.refresh()
+        }else {
+            res.json().then((data) => setError(data.message))
         }
 
         console.log(res)

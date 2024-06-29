@@ -21,20 +21,26 @@ export async function POST(req: Request) {
             return NextResponse.json({
                 message: "User not found"
             }, {
-                status: 400
+                status: 404
             });
         }
     
         // console.log(data);
         const matchPassword = await bcrypt.compare(data.password, userFound.password);
-                if (!matchPassword) throw new Error("Password is incorrect");
-    
+                if (!matchPassword) {
+                    return NextResponse.json({
+                        message: "Password not found"
+                    }, {
+                        status: 404
+                    });
+                }
+
         return NextResponse.json({
             message: "you are logged in!!!",
             user: data
         }, {
-            status: 201
-        });
+            status: 200
+        })
     }
     catch (error) {
         return NextResponse.json({
