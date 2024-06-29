@@ -1,21 +1,18 @@
 "use client"
 import { useRouter } from "next/navigation"
-import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
 function Dashboard() {
 
     const router = useRouter()
-    const searchParams = useSearchParams()
     const [user, setUser] = useState<string | null>(null)
 
     useEffect(() => {
-        
-        const user = searchParams.get("user")
-        if (!user) {
-            router.push("/auth/login")
-        }else {
+        const user = localStorage.getItem("user")
+        if (user) {
             setUser(user)
+        }else {
+            router.push("/auth/login")
         }
     }, [])
 

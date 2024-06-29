@@ -28,7 +28,8 @@ function LoginPage() {
 
         if (res.ok) {
             alert("Login successful, you are in!")
-            router.push(`/dashboard?user=${data.username}`)
+            localStorage.setItem("user", data.username)
+            router.push(`/dashboard`)
             router.refresh()
         }else {
             res.json().then((data) => setError(data.message))
